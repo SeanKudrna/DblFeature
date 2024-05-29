@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Alert, Button } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Alert, Image } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../navigation/AppNavigator';
 import { useNavigation } from '@react-navigation/native';
+import LinearGradient from 'react-native-linear-gradient';
 import useThemeColors from '../styles/colors/useThemeColors';
 import createStyles from '../styles/LoginScreenStyles';
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { firebaseAuth } from '../config/firebaseConfig';
 
 type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
@@ -33,7 +34,10 @@ const LoginScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome to DblFeature</Text>
+      <Image source={require('../assets/appicon-transparent.png')} style={styles.logo} />
+      <Text style={styles.title}>
+        <Text style={styles.highlight}>Dbl</Text>Feature
+      </Text>
       <TextInput 
         style={styles.input}
         placeholder="Email"
@@ -49,8 +53,15 @@ const LoginScreen: React.FC = () => {
         value={password}
         onChangeText={setPassword}
       />
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Login</Text>
+      <TouchableOpacity onPress={handleLogin} style={styles.buttonContainer}>
+        <LinearGradient
+          colors={['#d82239', '#fea14c']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>Login</Text>
+        </LinearGradient>
       </TouchableOpacity>
       <View style={styles.footer}>
         <Text style={{ color: colors.text }}>Don't have an account?</Text>

@@ -9,11 +9,19 @@ const createStyles = (colors: any) => {
       padding: 20,
       backgroundColor: colors.background,
     },
+    logo: {
+      width: 180,
+      height: 180,
+      marginBottom: 10,
+    },
     title: {
       fontSize: 32,
       fontWeight: 'bold',
       marginBottom: 20,
       color: colors.text,
+    },
+    highlight: {
+      color: '#d82239',
     },
     input: {
       width: '100%',
@@ -25,15 +33,28 @@ const createStyles = (colors: any) => {
       backgroundColor: colors.inputBackground,
       color: colors.text,
     },
+    halfInput: {
+      width: '48%',
+    },
+    row: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      width: '100%',
+      marginBottom: 20,
+    },
+    buttonContainer: {
+      width: '100%',
+      borderRadius: 5,
+      marginBottom: 20,
+    },
     button: {
       width: '100%',
       padding: 15,
       borderRadius: 5,
       alignItems: 'center',
-      backgroundColor: colors.buttonBackground,
     },
     buttonText: {
-      color: colors.buttonText,
+      color: '#fff',
       fontWeight: 'bold',
     },
     footer: {
@@ -42,7 +63,8 @@ const createStyles = (colors: any) => {
       justifyContent: 'center',
     },
     footerText: {
-      color: colors.footerText,
+      color: '#d82239',
+      fontWeight: 'bold',
     },
   });
 };
