@@ -1,36 +1,39 @@
+/**
+ * AppNavigator.tsx
+ * 
+ * This file defines the root navigator for the application,
+ * combining multiple stack navigators for authentication, home,
+ * and movie-related screens.
+ */
+
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import LoginScreen from '../screens/LoginScreen';
-import SignUpScreen from '../screens/SignUpScreen';
-import HomeScreen from '../screens/HomeScreen';
+import AuthStackNavigator from './AuthStackNavigator';
+import HomeStackNavigator from './HomeStackNavigator';
+import MovieStackNavigator from './MovieStackNavigator';
 
-export type RootStackParamList = {
-  Login: undefined;
-  SignUp: undefined;
-  Home: undefined;
-};
+// Create the root stack navigator
+const Stack = createStackNavigator();
 
-const Stack = createStackNavigator<RootStackParamList>();
-
-const AppNavigator = () => {
+const AppNavigator: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen 
-          name="Login" 
-          component={LoginScreen} 
-          options={{ headerShown: false }} 
+      <Stack.Navigator initialRouteName="Auth">
+        <Stack.Screen
+          name="Auth"
+          component={AuthStackNavigator}
+          options={{ headerShown: false }}
         />
-        <Stack.Screen 
-          name="SignUp" 
-          component={SignUpScreen} 
-          options={{ headerShown: false }} 
+        <Stack.Screen
+          name="Home"
+          component={HomeStackNavigator}
+          options={{ headerShown: false }}
         />
-        <Stack.Screen 
-          name="Home" 
-          component={HomeScreen} 
-          options={{ headerShown: false }} 
+        <Stack.Screen
+          name="Movie"
+          component={MovieStackNavigator}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
