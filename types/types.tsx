@@ -6,5 +6,6 @@ export type RootStackParamList = {
     SignUp: undefined;
     Profile: undefined;
     MovieListScreen: undefined;
+    Main: undefined
   };
   

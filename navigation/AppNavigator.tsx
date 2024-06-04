@@ -11,7 +11,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AuthStackNavigator from './AuthStackNavigator';
 import HomeStackNavigator from './HomeStackNavigator';
-import MovieStackNavigator from './MovieStackNavigator';
 
 // Create the root stack navigator
 const Stack = createStackNavigator();
@@ -28,11 +27,6 @@ const AppNavigator: React.FC = () => {
         <Stack.Screen
           name="Home"
           component={HomeStackNavigator}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Movie"
-          component={MovieStackNavigator}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

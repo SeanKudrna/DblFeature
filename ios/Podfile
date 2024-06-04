@@ -23,6 +23,13 @@ target 'DblFeature' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  use_modular_headers!
+
+  # Specific pods
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'GoogleUtilities', :modular_headers => true
+
   target 'DblFeatureTests' do
     inherit! :complete
     # Pods for testing

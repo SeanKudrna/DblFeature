@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, initializeAuth, indexedDBLocalPersistence } from 'firebase/auth';
+import { getAuth, initializeAuth, browserLocalPersistence } from 'firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API_KEY, AUTH_DOMAIN, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID, APP_ID, MEASUREMENT_ID } from '@env';
 
 // Your web app's Firebase configuration
@@ -16,9 +17,12 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Firebase Auth with persistence
-const firebaseAuth = initializeAuth(app, {
-  persistence: indexedDBLocalPersistence
+// Initialize Firebase Auth
+const firebaseAuth = getAuth(app);
+
+// Set persistence for auth
+firebaseAuth.setPersistence(browserLocalPersistence).catch((error) => {
+  console.error('Failed to set persistence:', error);
 });
 
 export { firebaseAuth, app };
